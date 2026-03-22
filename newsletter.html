@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free OpenClaw Tips - Claw Academy</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+        h1 { color: #16213e; margin-bottom: 10px; }
+        .subtitle { color: #666; margin-bottom: 30px; }
+        .benefit {
+            text-align: left;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .benefit:last-child { border-bottom: none; }
+        .benefit span { margin-right: 10px; }
+        input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 10px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+        input:focus { outline: none; border-color: #00d9ff; }
+        button {
+            width: 100%;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .note { font-size: 12px; color: #999; margin-top: 15px; }
+        .success { display: none; color: #00aa00; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📧 Free OpenClaw Tips</h1>
+        <p class="subtitle">Weekly insights delivered to your inbox</p>
+        
+        <div class="benefits">
+            <div class="benefit"><span>✅</span> Quick setup tips</div>
+            <div class="benefit"><span>✅</span> Automation ideas</div>
+            <div class="benefit"><span>✅</span> Early access to lessons</div>
+            <div class="benefit"><span>✅</span> Exclusive community invites</div>
+        </div>
+        
+        <br>
+        
+        <form id="form">
+            <input type="email" id="email" placeholder="your@email.com" required>
+            <input type="text" id="name" placeholder="First name">
+            <button type="submit">Subscribe Free</button>
+        </form>
+        
+        <p class="success" id="success">🎉 You're in! Check your inbox for a welcome email.</p>
+        <p class="note">Join 200+ others learning OpenClaw</p>
+    </div>
+
+    <script>
+    // Replace with your Google Sheets or webhook URL
+    const WEBHOOK_URL = 'YOUR_WEBHOOK_URL';
+    
+    document.getElementById('form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        
+        // Store locally for now
+        const subscribers = JSON.parse(localStorage.getItem('claw-subs') || '[]');
+        subscribers.push({ email, name, date: new Date().toISOString() });
+        localStorage.setItem('claw-subs', JSON.stringify(subscribers));
+        
+        // Optional: Send to webhook
+        if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL') {
+            fetch(WEBHOOK_URL, {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({ email, name })
+            });
+        }
+        
+        document.getElementById('form').style.display = 'none';
+        document.getElementById('success').style.display = 'block';
+    });
+    </script>
+</body>
+</html>
