@@ -7,67 +7,135 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --bg: #0a0a0a;
-            --card: #141414;
-            --border: #222;
-            --text: #fff;
-            --text2: #888;
-            --accent: #10b981;
-            --accent-hover: #34d399;
+            --bg: #0d0d0d;
+            --bg2: #111;
+            --text: #e0e0e0;
+            --text2: #666;
+            --accent: #00ff9d;
+            --accent-dim: rgba(0, 255, 157, 0.1);
+            --cursor: #00ff9d;
         }
 
         body {
-            font-family: 'Instrument Sans', -apple-system, sans-serif;
+            font-family: 'JetBrains Mono', monospace;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Minimal header */
+        /* Terminal background */
+        .terminal-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+            opacity: 0.15;
+        }
+
+        .terminal-line {
+            position: absolute;
+            font-size: 12px;
+            color: var(--accent);
+            white-space: nowrap;
+            animation: type 8s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes type {
+            0% { opacity: 0; transform: translateX(-100px); }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; transform: translateX(100vw); }
+        }
+
+        .terminal-line:nth-child(1) { top: 5%; animation-delay: 0s; }
+        .terminal-line:nth-child(2) { top: 15%; animation-delay: 1s; }
+        .terminal-line:nth-child(3) { top: 25%; animation-delay: 2s; }
+        .terminal-line:nth-child(4) { top: 35%; animation-delay: 3s; }
+        .terminal-line:nth-child(5) { top: 45%; animation-delay: 4s; }
+        .terminal-line:nth-child(6) { top: 55%; animation-delay: 5s; }
+        .terminal-line:nth-child(7) { top: 65%; animation-delay: 6s; }
+        .terminal-line:nth-child(8) { top: 75%; animation-delay: 7s; }
+
+        /* Header */
         header {
             padding: 24px;
             display: flex;
             justify-content: center;
+            position: relative;
+            z-index: 10;
         }
 
         .logo {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 600;
             color: var(--text);
             text-decoration: none;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
         }
 
-        .logo span {
+        .logo-icon {
+            width: 32px;
+            height: 32px;
             background: var(--accent);
             color: #000;
-            padding: 4px 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 6px;
-            font-size: 14px;
+            font-size: 16px;
         }
 
-        /* Hero - super simple */
+        .prompt {
+            color: var(--accent);
+        }
+
+        /* Main content */
         main {
-            max-width: 600px;
+            max-width: 580px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 40px 24px 80px;
             text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Blinking cursor */
+        .cursor-line {
+            font-size: 14px;
+            color: var(--text2);
+            margin-bottom: 24px;
+            min-height: 24px;
+        }
+
+        .cursor-line::after {
+            content: '█';
+            color: var(--cursor);
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
         }
 
         h1 {
-            font-size: clamp(36px, 8vw, 56px);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: clamp(32px, 7vw, 48px);
+            font-weight: 600;
+            line-height: 1.15;
+            margin-bottom: 16px;
         }
 
         h1 span {
@@ -75,52 +143,56 @@
         }
 
         .tagline {
-            font-size: 20px;
+            font-size: 16px;
             color: var(--text2);
             margin-bottom: 40px;
         }
 
-        /* Single CTA - big and clear */
+        /* CTA Button */
         .cta {
             background: var(--accent);
             color: #000;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            padding: 18px 40px;
-            border-radius: 12px;
+            padding: 16px 36px;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-block;
             transition: all 0.2s;
+            font-family: inherit;
         }
 
         .cta:hover {
-            background: var(--accent-hover);
-            transform: scale(1.02);
+            background: #00ff9d;
+            box-shadow: 0 0 30px var(--accent-dim);
+            transform: translateY(-2px);
         }
 
-        .cta-sub {
+        .price {
             display: block;
-            margin-top: 12px;
-            font-size: 14px;
+            margin-top: 10px;
+            font-size: 13px;
             color: var(--text2);
+            font-weight: 400;
         }
 
-        /* What they get - super simple list */
+        /* What you get */
         .what-you-get {
-            margin-top: 60px;
+            margin-top: 50px;
             text-align: left;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
+            background: rgba(20, 20, 20, 0.8);
+            border: 1px solid #222;
+            border-radius: 12px;
+            padding: 28px;
         }
 
         .what-you-get h2 {
-            font-size: 14px;
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--text2);
+            letter-spacing: 2px;
+            color: var(--accent);
             margin-bottom: 20px;
+            font-weight: 500;
         }
 
         .what-you-get ul {
@@ -128,57 +200,67 @@
         }
 
         .what-you-get li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 10px 0;
+            border-bottom: 1px solid #1a1a1a;
             display: flex;
             align-items: center;
             gap: 12px;
+            font-size: 14px;
         }
 
         .what-you-get li:last-child {
             border-bottom: none;
         }
 
-        .check {
+        .arrow {
             color: var(--accent);
-            font-weight: 600;
         }
 
-        /* Course preview */
-        .course-preview {
-            margin-top: 32px;
+        /* Course list */
+        .course-list {
+            margin-top: 24px;
             text-align: left;
         }
 
-        .course-preview h2 {
-            font-size: 14px;
+        .course-list h2 {
+            font-size: 11px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             color: var(--text2);
-            margin-bottom: 16px;
+            margin-bottom: 14px;
+            font-weight: 500;
         }
 
         .lesson {
-            padding: 16px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 15px;
+            padding: 12px 16px;
+            background: rgba(20, 20, 20, 0.6);
+            border: 1px solid #1a1a1a;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lesson-num {
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 12px;
         }
 
         .lesson:last-child {
             margin-bottom: 0;
         }
 
-        /* Money back */
+        /* Guarantee */
         .guarantee {
-            margin-top: 40px;
-            padding: 20px;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 10px;
-            font-size: 14px;
+            margin-top: 36px;
+            padding: 16px;
+            background: rgba(0, 255, 157, 0.05);
+            border: 1px solid rgba(0, 255, 157, 0.15);
+            border-radius: 8px;
+            font-size: 12px;
             color: var(--accent);
         }
 
@@ -186,61 +268,200 @@
         footer {
             text-align: center;
             padding: 40px 24px;
-            color: var(--text2);
-            font-size: 14px;
+            color: #444;
+            font-size: 12px;
+            position: relative;
+            z-index: 10;
         }
 
         footer a {
-            color: var(--text2);
+            color: #444;
             text-decoration: underline;
+        }
+
+        /* Prompt input style */
+        .input-line {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 30px;
+            padding: 14px 18px;
+            background: #0a0a0a;
+            border: 1px solid #222;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .input-line input {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-family: inherit;
+            font-size: inherit;
+            outline: none;
+            flex: 1;
+        }
+
+        .input-line input::placeholder {
+            color: #444;
+        }
+
+        /* Decorative terminal header */
+        .terminal-header {
+            background: #1a1a1a;
+            border-radius: 8px 8px 0 0;
+            padding: 10px 16px;
+            display: flex;
+            gap: 8px;
+            margin-bottom: -1px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .terminal-dot:nth-child(1) { background: #ff5f56; }
+        .terminal-dot:nth-child(2) { background: #ffbd2e; }
+        .terminal-dot:nth-child(3) { background: #27ca40; }
+
+        .terminal-window {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .terminal-content {
+            padding: 20px;
+            font-size: 13px;
+        }
+
+        .terminal-content .prompt {
+            color: var(--accent);
+            margin-right: 8px;
+        }
+
+        .terminal-content .cmd {
+            color: var(--text);
+        }
+
+        .terminal-content .output {
+            color: var(--text2);
+            margin-top: 8px;
+            margin-bottom: 16px;
+        }
+
+        .highlight {
+            color: var(--accent);
         }
     </style>
 </head>
 <body>
+    <!-- Animated terminal background -->
+    <div class="terminal-bg">
+        <div class="terminal-line">> initializing claw-academy --course=openclaw</div>
+        <div class="terminal-line">> npm install ai-assistant --save</div>
+        <div class="terminal-line">> configuring telegram-bot integration...</div>
+        <div class="terminal-line">> import { VoiceCommand } from '@claw/core'</div>
+        <div class="terminal-line">> success: user learned openclaw in 6 lessons</div>
+        <div class="terminal-line">> building custom-agent --name="personal-assistant"</div>
+        <div class="terminal-line">> automation workflow: connected calendar + email</div>
+        <div class="terminal-line">> deployment: self-hosted-ai running on localhost</div>
+    </div>
+
     <header>
         <a href="#" class="logo">
-            <span>🦶</span> Claw Academy
+            <span class="logo-icon">🦶</span>
+            <span class="prompt">~/</span>claw-academy
         </a>
     </header>
 
     <main>
+        <div class="cursor-line">> loading course curriculum...</div>
+
         <h1>Build Your Own<br><span>AI Assistant</span></h1>
-        <p class="tagline">Learn OpenClaw in 6 simple lessons. Run it on your computer. No monthly fees.</p>
+        <p class="tagline">Learn OpenClaw in 6 lessons. Runs on your machine. No monthly fees.</p>
 
         <a href="https://gumroad.com/l/claw-academy" class="cta">
-            Get the Course — $67
+            Get the Course — $47
         </a>
-        <span class="cta-sub">One-time payment. Lifetime access.</span>
+        <span class="price">one-time payment · lifetime access</span>
 
         <div class="what-you-get">
-            <h2>What You Get</h2>
+            <h2>> what_you_get</h2>
             <ul>
-                <li><span class="check">✓</span> 6 step-by-step lessons</li>
-                <li><span class="check">✓</span> Setup in under 30 minutes</li>
-                <li><span class="check">✓</span> Works on Mac, Linux, Windows</li>
-                <li><span class="check">✓</span> Connect Telegram, Discord, email</li>
-                <li><span class="check">✓</span> Voice commands & automation</li>
-                <li><span class="check">✓</span> Access to community Discord</li>
+                <li><span class="arrow">›</span> 6 step-by-step lessons</li>
+                <li><span class="arrow">›</span> Setup in under 30 minutes</li>
+                <li><span class="arrow">›</span> Works on Mac, Linux, Windows</li>
+                <li><span class="arrow">›</span> Connect Telegram, Discord, email</li>
+                <li><span class="arrow">›</span> Voice commands & automation</li>
+                <li><span class="arrow">›</span> Access to community Discord</li>
             </ul>
         </div>
 
-        <div class="course-preview">
-            <h2>The Course</h2>
-            <div class="lesson">1. What is OpenClaw?</div>
-            <div class="lesson">2. Installation & Setup</div>
-            <div class="lesson">3. Connect Your First App</div>
-            <div class="lesson">4. Voice & Audio</div>
-            <div class="lesson">5. Automation Basics</div>
-            <div class="lesson">6. Custom Agents</div>
+        <div class="course-list">
+            <h2>> course_curriculum</h2>
+            <div class="lesson">
+                <span class="lesson-num">[01]</span>
+                What is OpenClaw?
+            </div>
+            <div class="lesson">
+                <span class="lesson-num">[02]</span>
+                Installation & Setup
+            </div>
+            <div class="lesson">
+                <span class="lesson-num">[03]</span>
+                Connect Your First App
+            </div>
+            <div class="lesson">
+                <span class="lesson-num">[04]</span>
+                Voice & Audio
+            </div>
+            <div class="lesson">
+                <span class="lesson-num">[05]</span>
+                Automation Basics
+            </div>
+            <div class="lesson">
+                <span class="lesson-num">[06]</span>
+                Custom Agents
+            </div>
+        </div>
+
+        <!-- Terminal demo -->
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+                <div class="terminal-dot"></div>
+            </div>
+            <div class="terminal-content">
+                <div><span class="prompt">$</span> <span class="cmd">claw init my-assistant</span></div>
+                <div class="output">Initializing OpenClaw... ✓</div>
+                
+                <div><span class="prompt">$</span> <span class="cmd">claw connect telegram</span></div>
+                <div class="output">Telegram bot connected! ✓</div>
+                
+                <div><span class="prompt">$</span> <span class="cmd">claw run</span></div>
+                <div class="output">AI Assistant is running on localhost:3000</div>
+                
+                <div><span class="prompt">$</span> <span class="cmd">echo "Your AI is ready!"</span></div>
+                <div class="output highlight">Your AI is ready!</div>
+            </div>
         </div>
 
         <div class="guarantee">
-            30-day money-back guarantee. No questions asked.
+            30-day money-back guarantee · no questions asked
         </div>
     </main>
 
     <footer>
-        <p>Questions? <a href="mailto:hello@clawacademy.com">Email us</a></p>
+        <p><a href="mailto:hello@clawacademy.com">hello@clawacademy.com</a></p>
         <p style="margin-top:8px">© 2026 Claw Academy</p>
     </footer>
 </body>
