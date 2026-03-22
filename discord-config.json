@@ -1,0 +1,57 @@
+{
+  "serverName": "Claw Academy",
+  "icon": "🦶",
+  "channels": {
+    "categories": [
+      {
+        "name": "📚 Course Content",
+        "channels": [
+          { "name": "start-here", "type": "text", "description": "Start here! Read first" },
+          { "name": "lesson-1", "type": "text", "description": "What is OpenClaw?" },
+          { "name": "lesson-2", "type": "text", "description": "Installation" },
+          { "name": "lesson-3", "type": "text", "description": "First Apps" },
+          { "name": "lesson-4", "type": "text", "description": "Voice & Audio" },
+          { "name": "lesson-5", "type": "text", "description": "Automation" },
+          { "name": "lesson-6", "type": "text", "description": "Custom Agents" }
+        ]
+      },
+      {
+        "name": "💬 Community",
+        "channels": [
+          { "name": "introductions", "type": "text", "description": "Say hello!" },
+          { "name": "general", "type": "text", "description": "Chat about anything" },
+          { "name": "showcase", "type": "text", "description": "Show what you're building" },
+          { "name": "help", "type": "text", "description": "Get help" }
+        ]
+      },
+      {
+        "name": "🎉 Announcements",
+        "channels": [
+          { "name": "news", "type": "text", "description": "New lessons & updates" },
+          { "name": "wins", "type": "text", "description": "Share your wins" }
+        ]
+      },
+      {
+        "name": "🔊 Voice",
+        "channels": [
+          { "name": "voice-lounge", "type": "voice", "description": "Hang out" },
+          { "name": "study-room", "type": "voice", "description": "Learn together" }
+        ]
+      }
+    ],
+    "roles": [
+      { "name": "Founder", "color": "#00d9ff", "permissions": "all" },
+      { "name": "Student", "color": "#00ff88", "permissions": "read,write" },
+      { "name": "Graduate", "color": "#ffd700", "permissions": "read,write,manage" }
+    ]
+  },
+  "automod": {
+    "welcomeChannel": "general",
+    "rules": [
+      "Be kind and respectful",
+      "No spam or self-promotion",
+      "Stay on topic",
+      "Help others learn"
+    ]
+  }
+}
