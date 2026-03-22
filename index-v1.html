@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Claw Academy | Learn OpenClaw</title>
-    <meta name="description" content="Learn OpenClaw in 6 lessons. Build your own AI assistant. No coding experience needed.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,6 +33,7 @@
             overflow-x: hidden;
         }
 
+        /* Stars background like OpenClaw */
         .stars {
             position: fixed;
             top: 0;
@@ -61,6 +61,7 @@
             to { opacity: 0.7; }
         }
 
+        /* Subtle terminal commands */
         .terminal-bg {
             position: fixed;
             top: 0;
@@ -69,7 +70,7 @@
             bottom: 0;
             z-index: -1;
             overflow: hidden;
-            opacity: 0.15;
+            opacity: 0.2;
         }
 
         .terminal-line {
@@ -95,6 +96,7 @@
         .terminal-line:nth-child(5) { top: 70%; animation-delay: 12s; }
         .terminal-line:nth-child(6) { top: 85%; animation-delay: 15s; }
 
+        /* Header */
         header {
             padding: 20px;
             display: flex;
@@ -127,8 +129,9 @@
 
         .prompt { color: var(--coral); }
 
+        /* Main */
         main {
-            max-width: 520px;
+            max-width: 500px;
             margin: 0 auto;
             padding: 20px 20px 80px;
             text-align: center;
@@ -143,7 +146,9 @@
             margin-bottom: 14px;
         }
 
-        h1 span { color: var(--coral); }
+        h1 span {
+            color: var(--coral);
+        }
 
         .tagline {
             font-size: 15px;
@@ -151,6 +156,7 @@
             margin-bottom: 32px;
         }
 
+        /* CTA */
         .cta {
             background: var(--coral);
             color: var(--bg-deep);
@@ -178,6 +184,7 @@
             font-weight: 400;
         }
 
+        /* What you get */
         .what-you-get {
             margin-top: 44px;
             text-align: left;
@@ -197,7 +204,9 @@
             font-weight: 500;
         }
 
-        .what-you-get ul { list-style: none; }
+        .what-you-get ul {
+            list-style: none;
+        }
 
         .what-you-get li {
             padding: 8px 0;
@@ -209,9 +218,13 @@
             color: var(--text2);
         }
 
-        .what-you-get li:last-child { border-bottom: none; }
+        .what-you-get li:last-child {
+            border-bottom: none;
+        }
+
         .arrow { color: var(--coral); }
 
+        /* Course */
         .course-list {
             margin-top: 24px;
             text-align: left;
@@ -245,52 +258,7 @@
             font-size: 11px;
         }
 
-        .pricing-options {
-            margin-top: 32px;
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .price-option {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 16px 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-            transition: all 0.2s;
-        }
-
-        .price-option:hover {
-            border-color: var(--coral);
-        }
-
-        .price-option.featured {
-            border-color: var(--coral);
-            background: rgba(255, 77, 77, 0.08);
-        }
-
-        .price-option h3 {
-            font-size: 12px;
-            color: var(--text2);
-            margin-bottom: 6px;
-        }
-
-        .price-option .amount {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .price-option .amount span {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text2);
-        }
-
+        /* Terminal demo */
         .terminal {
             margin-top: 32px;
             background: #111827;
@@ -320,17 +288,30 @@
             font-size: 12px;
         }
 
-        .terminal-body .line { margin-bottom: 12px; }
-        .terminal-body .prompt { margin-right: 8px; }
-        .terminal-body .cmd { color: var(--text); }
+        .terminal-body .line {
+            margin-bottom: 12px;
+        }
+
+        .terminal-body .prompt {
+            margin-right: 8px;
+        }
+
+        .terminal-body .cmd {
+            color: var(--text);
+        }
+
         .terminal-body .output {
             color: var(--text2);
             font-size: 11px;
             margin-top: 4px;
             margin-bottom: 14px;
         }
-        .terminal-body .success { color: var(--cyan); }
 
+        .terminal-body .success {
+            color: var(--cyan);
+        }
+
+        /* Guarantee */
         .guarantee {
             margin-top: 32px;
             padding: 14px;
@@ -341,6 +322,7 @@
             color: var(--coral);
         }
 
+        /* Footer */
         footer {
             text-align: center;
             padding: 40px 24px;
@@ -357,7 +339,10 @@
     </style>
 </head>
 <body>
+    <!-- Stars background -->
     <div class="stars"></div>
+
+    <!-- Terminal background -->
     <div class="terminal-bg">
         <div class="terminal-line">> claw install openclaw</div>
         <div class="terminal-line">> initializing gateway...</div>
@@ -382,21 +367,6 @@
             Get the Course — $47
         </a>
         <span class="price">one-time · lifetime access</span>
-
-        <div class="pricing-options">
-            <div class="price-option featured">
-                <h3>Course</h3>
-                <div class="amount">$47<span>/one-time</span></div>
-            </div>
-            <div class="price-option">
-                <h3>1-on-1 Setup</h3>
-                <div class="amount">$97<span>/one-time</span></div>
-            </div>
-            <div class="price-option">
-                <h3>Mastermind</h3>
-                <div class="amount">$97<span>/mo</span></div>
-            </div>
-        </div>
 
         <div class="what-you-get">
             <h2>// what you get</h2>
@@ -447,7 +417,7 @@
         </div>
 
         <div class="guarantee">
-            30-day money-back guarantee · no questions asked
+            30-day money-back guarantee
         </div>
     </main>
 

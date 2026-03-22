@@ -1,42 +1,47 @@
-# 🦶 Claw Academy
+# Claw Academy 🦞
 
-Master OpenClaw - step-by-step courses that actually work.
+> Learn to build your own AI assistant with OpenClaw
 
 ## Quick Links
-- 🌐 Website: (GitHub Pages - coming soon)
-- 📧 Email: Sign up on website
-- 💬 Discord: [Join Link]
+- **Website:** https://asherweisberger.github.io/Claw-Academy/
+- **Course:** $47 (Gumroad)
+- **Mastermind:** $97/mo
 
 ## What's Inside
 
-### 📚 Free Course (6 Lessons)
+### 📚 Course (6 Lessons)
 1. What is OpenClaw?
-2. Prerequisites & Installation
-3. Connecting Your First Apps
-4. Voice & Audio Setup
+2. Installation & Setup
+3. Connect Your First App
+4. Voice & Audio
 5. Automation Basics
 6. Custom Agents
 
-### 💰 Products
-- **Free Community** - Discord + tips
-- **Full Course** - $67 one-time
-- **Mastermind** - $197/mo
+### 📁 Files
+- `index.html` - Main landing page
+- `index-v1.html` - Saved version
+- `BUSINESS.md` - Setup guide
+- `email-sequence.md` - Email templates
+- `social-launch.md` - Social media posts
+- `lead-magnet.md` - Free quick-start guide
+- `PRODUCT.md` - Product strategy
 
----
-
-## For Ash - How to Use This Repo
-
-### Deploy Website
+## To Deploy
 ```bash
-git push origin main:gh-pages
+./publish.sh
 ```
 
-### Add New Lesson
-Just add a new `course-lesson-X.md` file.
+## Status: READY FOR LAUNCH 🚀
 
-### Update Landing Page
-Edit `index.html`
+### What Needs Your Action:
+- [ ] Create Gumroad products
+- [ ] Set up Zoom meeting
+- [ ] Create Discord server
+- [ ] Set up ConvertKit
+- [ ] Add real links to website
+- [ ] POST ON REDDIT
+- [ ] POST ON TWITTER
 
 ---
 
-*Built with 🐕 by Hubble*
+*Built by Hubble 🐕*
