@@ -128,7 +128,7 @@
         .prompt { color: var(--coral); }
 
         main {
-            max-width: 520px;
+            max-width: 600px;
             margin: 0 auto;
             padding: 20px 20px 80px;
             text-align: center;
@@ -145,37 +145,124 @@
 
         h1 span { color: var(--coral); }
 
+        h2 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
         .tagline {
             font-size: 15px;
             color: var(--text2);
             margin-bottom: 32px;
         }
 
-        .cta {
+        .section {
+            margin-top: 36px;
+            text-align: left;
+        }
+
+        /* Three options - very clear */
+        .option {
+            background: var(--card);
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        .option:hover {
+            border-color: var(--coral);
+        }
+
+        .option.featured {
+            border-color: var(--coral);
+            background: rgba(255, 77, 77, 0.08);
+        }
+
+        .option-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .option-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .option-price {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--cyan);
+        }
+
+        .option-price span {
+            font-size: 12px;
+            font-weight: 400;
+            color: var(--text2);
+        }
+
+        .option-desc {
+            font-size: 13px;
+            color: var(--text2);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .option-features {
+            list-style: none;
+            font-size: 12px;
+            color: var(--text2);
+        }
+
+        .option-features li {
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-features li::before {
+            content: "✓";
+            color: var(--cyan);
+            font-weight: 600;
+        }
+
+        .option-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 16px;
             background: var(--coral);
             color: var(--bg-deep);
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            padding: 15px 32px;
-            border-radius: 8px;
+            text-align: center;
             text-decoration: none;
-            display: inline-block;
+            border-radius: 8px;
             transition: all 0.2s;
             font-family: inherit;
         }
 
-        .cta:hover {
+        .option-btn:hover {
             background: #ff6b6b;
-            box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
             transform: translateY(-2px);
         }
 
-        .price {
-            display: block;
-            margin-top: 10px;
-            font-size: 12px;
-            color: var(--text2);
-            font-weight: 400;
+        .option-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .option-btn.secondary:hover {
+            border-color: var(--coral);
+            color: var(--coral);
         }
 
         .what-you-get {
@@ -245,52 +332,6 @@
             font-size: 11px;
         }
 
-        .pricing-options {
-            margin-top: 32px;
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .price-option {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 16px 20px;
-            text-align: center;
-            flex: 1;
-            min-width: 140px;
-            transition: all 0.2s;
-        }
-
-        .price-option:hover {
-            border-color: var(--coral);
-        }
-
-        .price-option.featured {
-            border-color: var(--coral);
-            background: rgba(255, 77, 77, 0.08);
-        }
-
-        .price-option h3 {
-            font-size: 12px;
-            color: var(--text2);
-            margin-bottom: 6px;
-        }
-
-        .price-option .amount {
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
-        .price-option .amount span {
-            font-size: 12px;
-            font-weight: 400;
-            color: var(--text2);
-        }
-
         .terminal {
             margin-top: 32px;
             background: #111827;
@@ -339,6 +380,7 @@
             border-radius: 8px;
             font-size: 11px;
             color: var(--coral);
+            text-align: center;
         }
 
         footer {
@@ -376,30 +418,74 @@
 
     <main>
         <h1>Build Your Own<br><span>AI Assistant</span></h1>
-        <p class="tagline">Learn OpenClaw in 6 lessons. Runs on your machine.</p>
+        <p class="tagline">Learn OpenClaw in 6 lessons. Runs on your machine. No monthly fees.</p>
 
-        <a href="https://gumroad.com/l/claw-academy" class="cta">
-            Get the Course — $47
-        </a>
-        <span class="price">one-time · lifetime access</span>
-
-        <div class="pricing-options">
-            <div class="price-option featured">
-                <h3>Course</h3>
-                <div class="amount">$47<span>/one-time</span></div>
+        <!-- OPTION 1: Course -->
+        <div class="option featured">
+            <div class="option-header">
+                <span class="option-title">📚 The Course</span>
+                <span class="option-price">$47 <span>one-time</span></span>
             </div>
-            <div class="price-option">
-                <h3>1-on-1 Setup</h3>
-                <div class="amount">$97<span>/one-time</span></div>
-            </div>
-            <div class="price-option">
-                <h3>Mastermind</h3>
-                <div class="amount">$97<span>/mo</span></div>
-            </div>
+            <p class="option-desc">
+                Perfect if you want to learn at your own pace. 6 detailed lessons teaching you everything from installation to custom agents.
+            </p>
+            <ul class="option-features">
+                <li>6 step-by-step lessons</li>
+                <li>Lifetime access</li>
+                <li>Access to Discord community</li>
+                <li>All future updates included</li>
+            </ul>
+            <a href="https://gumroad.com/l/claw-academy" target="_blank" class="option-btn">
+                Get the Course
+            </a>
         </div>
 
+        <!-- OPTION 2: 1-on-1 -->
+        <div class="option">
+            <div class="option-header">
+                <span class="option-title">🎯 1-on-1 Setup Call</span>
+                <span class="option-price">$97 <span>one-time</span></span>
+            </div>
+            <p class="option-desc">
+                I'll hop on a Zoom call with you and personally help you get OpenClaw running. 60 minutes, screen share, all your questions answered.
+            </p>
+            <ul class="option-features">
+                <li>60-minute Zoom call</li>
+                <li>Screen share setup help</li>
+                <li>Get running in 1 hour</li>
+                <li>Ask me anything</li>
+                <li>Includes course access</li>
+            </ul>
+            <a href="https://gumroad.com/l/claw-setup" target="_blank" class="option-btn">
+                Book 1-on-1 Call
+            </a>
+        </div>
+
+        <!-- OPTION 3: Mastermind -->
+        <div class="option">
+            <div class="option-header">
+                <span class="option-title">👥 Mastermind</span>
+                <span class="option-price">$97 <span>/month</span></span>
+            </div>
+            <p class="option-desc">
+                Ongoing support and accountability. Monthly group calls, direct access to me, and a community of people building AI assistants together.
+            </p>
+            <ul class="option-features">
+                <li>Monthly group Zoom calls</li>
+                <li>Slack/Discord access</li>
+                <li>Direct message me anytime</li>
+                <li>Priority help</li>
+                <li>Course included</li>
+                <li>Cancel anytime</li>
+            </ul>
+            <a href="https://gumroad.com/l/claw-mastermind" target="_blank" class="option-btn">
+                Join Mastermind
+            </a>
+        </div>
+
+        <!-- What you get -->
         <div class="what-you-get">
-            <h2>// what you get</h2>
+            <h2>// what's included</h2>
             <ul>
                 <li><span class="arrow">›</span> 6 step-by-step lessons</li>
                 <li><span class="arrow">›</span> Setup in under 30 minutes</li>
@@ -410,6 +496,7 @@
             </ul>
         </div>
 
+        <!-- Course list -->
         <div class="course-list">
             <h2>// course curriculum</h2>
             <div class="lesson"><span class="lesson-num">[01]</span> What is OpenClaw?</div>
@@ -420,6 +507,7 @@
             <div class="lesson"><span class="lesson-num">[06]</span> Custom Agents</div>
         </div>
 
+        <!-- Terminal demo -->
         <div class="terminal">
             <div class="terminal-header">
                 <div class="dot"></div>
