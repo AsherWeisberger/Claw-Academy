@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claw Academy - Master OpenClaw</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6; color: #333;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .cta-button {
+            background: linear-gradient(90deg, #00d9ff, #00ff88);
+            color: #1a1a2e;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.4);
+        }
+        .features {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .feature-card {
+            padding: 30px;
+            border-radius: 15px;
+            background: #f8f9fa;
+            transition: transform 0.3s;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-card h3 { margin-bottom: 15px; color: #16213e; }
+        .pricing {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+        .pricing-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .price-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        .price-card.featured {
+            border: 3px solid #00d9ff;
+            transform: scale(1.05);
+        }
+        .price-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #16213e;
+            margin-bottom: 20px;
+        }
+        .price span { font-size: 1rem; font-weight: normal; }
+        .price-card ul { list-style: none; margin-bottom: 30px; }
+        .price-card li { padding: 8px 0; }
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <section class="hero">
+        <h1>🦶 Claw Academy</h1>
+        <p>Master OpenClaw and build your own AI assistant. Step-by-step courses that actually work.</p>
+        <a href="#pricing" class="cta-button">Get Started</a>
+    </section>
+
+    <section class="features">
+        <h2>What You'll Learn</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🚀 Quick Start</h3>
+                <p>Get OpenClaw running in under 10 minutes with our beginner-friendly setup guide.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔌 Integrations</h3>
+                <p>Connect to Telegram, Discord, Slack, and 50+ other platforms seamlessly.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎙️ Voice & Audio</h3>
+                <p>Set up voice commands, text-to-speech, and audio notifications.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤖 Custom Agents</h3>
+                <p>Build your own AI agents tailored to your specific needs.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏠 Home Automation</h3>
+                <p>Connect with Home Assistant, smart home devices, and IFTTT.</p>
+            </div>
+            <div class="feature-card">
+                <h3>⚡ Automation</h3>
+                <p>Create powerful workflows that save you time and effort.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+        <h2>Choose Your Path</h2>
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Community</h3>
+                <div class="price">Free</div>
+                <ul>
+                    <li>✓ Discord community</li>
+                    <li>✓ Weekly tips & tricks</li>
+                    <li>✓ Resource library</li>
+                </ul>
+                <a href="#" class="cta-button" style="background:#ccc;color:#333">Join Free</a>
+            </div>
+            <div class="price-card featured">
+                <h3>Full Course</h3>
+                <div class="price">$67<span>/one-time</span></div>
+                <ul>
+                    <li>✓ Complete video course</li>
+                    <li>✓ Step-by-step scripts</li>
+                    <li>✓ Discord community</li>
+                    <li>✓ Lifetime updates</li>
+                </ul>
+                <a href="#" class="cta-button">Get Course</a>
+            </div>
+            <div class="price-card">
+                <h3>Mastermind</h3>
+                <div class="price">$197<span>/month</span></div>
+                <ul>
+                    <li>✓ Full course access</li>
+                    <li>✓ Monthly Zoom calls</li>
+                    <li>✓ Direct Slack access</li>
+                    <li>✓ 1-on-1 setup help</li>
+                </ul>
+                <a href="#" class="cta-button" style="background:#16213e">Go Premium</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" style="background:#f8f9fa;">
+        <h2>Who Is This For?</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>🧑‍💻 Developers</h3>
+                <p>Extend OpenClaw with custom plugins and integrations.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🏠 Home Users</h3>
+                <p>Automate your home with voice-controlled AI.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🛒 Small Business</h3>
+                <p>Streamline operations with AI assistants.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🤔 Tech Curious</h3>
+                <p>Learn about AI without writing code.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>🦶 Claw Academy - Built by AI, Taught by Humans</p>
+        <p style="opacity:0.6;margin-top:10px;">Questions? Reach out on Discord</p>
+    </footer>
+</body>
+</html>
