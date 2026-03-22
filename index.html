@@ -3,979 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claw Academy | Master OpenClaw</title>
-    <meta name="description" content="Learn to build your own AI assistant with OpenClaw. Step-by-step courses. No coding experience needed.">
+    <title>Claw Academy | Learn OpenClaw</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --bg: #0d0d0d;
-            --bg-soft: #161616;
-            --bg-mute: #1f1f1f;
-            --text: #f5f5f5;
-            --text-dim: #888;
-            --accent: #00d4aa;
-            --accent-soft: rgba(0, 212, 170, 0.15);
-            --border: #2a2a2a;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            --bg: #0a0a0a;
+            --card: #141414;
+            --border: #222;
+            --text: #fff;
+            --text2: #888;
+            --accent: #10b981;
+            --accent-hover: #34d399;
         }
 
         body {
-            font-family: 'DM Sans', -apple-system, sans-serif;
+            font-family: 'Instrument Sans', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.6;
-            font-size: 16px;
-            overflow-x: hidden;
+            line-height: 1.5;
+            min-height: 100vh;
         }
 
-        /* Subtle background */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 212, 170, 0.08), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 100%, rgba(0, 180, 255, 0.05), transparent);
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
-
-        /* Header */
+        /* Minimal header */
         header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 100;
-            padding: 20px 0;
-            background: rgba(13, 13, 13, 0.8);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        header.scrolled {
-            border-bottom-color: var(--border);
-        }
-
-        .header-inner {
+            padding: 24px;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            justify-content: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
+            font-size: 20px;
+            font-weight: 600;
             color: var(--text);
             text-decoration: none;
             display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: var(--accent);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            gap: 40px;
-        }
-
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--text);
-        }
-
-        .btn {
-            display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.25s;
-            cursor: pointer;
-            border: none;
         }
 
-        .btn-primary {
+        .logo span {
             background: var(--accent);
-            color: var(--bg);
+            color: #000;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 14px;
         }
 
-        .btn-primary:hover {
-            background: #00eabb;
-            transform: translateY(-1px);
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--text-dim);
-            border: 1px solid var(--border);
-        }
-
-        .btn-ghost:hover {
-            color: var(--text);
-            border-color: var(--text-dim);
-        }
-
-        /* Hero */
-        .hero {
-            padding: 180px 0 120px;
+        /* Hero - super simple */
+        main {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 60px 24px;
             text-align: center;
         }
 
-        .hero-eyebrow {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--accent-soft);
-            border: 1px solid rgba(0, 212, 170, 0.2);
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--accent);
-            margin-bottom: 32px;
-            animation: fadeIn 0.6s ease-out;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 8vw, 80px);
+        h1 {
+            font-size: clamp(36px, 8vw, 56px);
             font-weight: 700;
             line-height: 1.1;
-            margin-bottom: 24px;
-            animation: fadeIn 0.6s ease-out 0.1s both;
-        }
-
-        .hero h1 span {
-            color: var(--accent);
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--text-dim);
-            max-width: 540px;
-            margin: 0 auto 40px;
-            animation: fadeIn 0.6s ease-out 0.2s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            animation: fadeIn 0.6s ease-out 0.3s both;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 60px;
-            justify-content: center;
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid var(--border);
-            animation: fadeIn 0.6s ease-out 0.4s both;
-        }
-
-        .stat-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            font-weight: 700;
-            color: var(--text);
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-dim);
-        }
-
-        /* Section */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-label {
-            display: inline-block;
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--accent);
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 44px);
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .section-desc {
-            font-size: 17px;
-            color: var(--text-dim);
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Features */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 32px;
-            transition: all 0.3s;
-        }
-
-        .feature-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-        }
-
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--accent-soft);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             margin-bottom: 20px;
-            font-size: 24px;
         }
 
-        .feature-card h3 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .feature-card p {
-            font-size: 14px;
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-
-        /* Course */
-        .course-section {
-            background: var(--bg-soft);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .course-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .lesson-row {
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 24px 32px;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .lesson-row:hover {
-            border-color: var(--accent);
-            transform: translateX(8px);
-        }
-
-        .lesson-num {
-            width: 40px;
-            height: 40px;
-            background: var(--accent);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 16px;
-            color: var(--bg);
-            flex-shrink: 0;
-        }
-
-        .lesson-info h4 {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .lesson-info p {
-            font-size: 13px;
-            color: var(--text-dim);
-        }
-
-        .lesson-arrow {
-            margin-left: auto;
-            color: var(--text-dim);
-            transition: transform 0.3s;
-        }
-
-        .lesson-row:hover .lesson-arrow {
-            transform: translateX(4px);
+        h1 span {
             color: var(--accent);
         }
 
-        /* Pricing */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
+        .tagline {
+            font-size: 20px;
+            color: var(--text2);
+            margin-bottom: 40px;
         }
 
-        .pricing-card {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 40px 32px;
-            text-align: center;
-            transition: all 0.3s;
-            position: relative;
+        /* Single CTA - big and clear */
+        .cta {
+            background: var(--accent);
+            color: #000;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 18px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.2s;
         }
 
-        .pricing-card:hover {
-            transform: translateY(-4px);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--accent);
+        .cta:hover {
+            background: var(--accent-hover);
             transform: scale(1.02);
         }
 
-        .pricing-card.featured:hover {
-            transform: scale(1.02) translateY(-4px);
-        }
-
-        .pricing-card.featured::before {
-            content: 'Popular';
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent);
-            color: var(--bg);
-            font-size: 11px;
-            font-weight: 700;
-            padding: 6px 14px;
-            border-radius: 100px;
-        }
-
-        .pricing-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--accent-soft);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 24px;
-        }
-
-        .pricing-card h3 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .pricing-price {
-            font-family: 'Playfair Display', serif;
-            font-size: 44px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .pricing-price span {
+        .cta-sub {
+            display: block;
+            margin-top: 12px;
             font-size: 14px;
-            font-weight: 400;
-            color: var(--text-dim);
+            color: var(--text2);
         }
 
-        .pricing-desc {
-            font-size: 13px;
-            color: var(--text-dim);
-            margin-bottom: 24px;
-        }
-
-        .pricing-features {
-            list-style: none;
+        /* What they get - super simple list */
+        .what-you-get {
+            margin-top: 60px;
             text-align: left;
-            margin-bottom: 32px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 32px;
         }
 
-        .pricing-features li {
+        .what-you-get h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text2);
+            margin-bottom: 20px;
+        }
+
+        .what-you-get ul {
+            list-style: none;
+        }
+
+        .what-you-get li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 10px 0;
-            font-size: 14px;
-            color: var(--text-dim);
         }
 
-        .pricing-features li::before {
-            content: '✓';
+        .what-you-get li:last-child {
+            border-bottom: none;
+        }
+
+        .check {
             color: var(--accent);
             font-weight: 600;
         }
 
-        /* FAQ */
-        .faq-list {
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border);
-        }
-
-        .faq-question {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 24px 0;
-            background: none;
-            border: none;
-            color: var(--text);
-            font-size: 17px;
-            font-weight: 500;
+        /* Course preview */
+        .course-preview {
+            margin-top: 32px;
             text-align: left;
-            cursor: pointer;
-            transition: color 0.2s;
         }
 
-        .faq-question:hover {
-            color: var(--accent);
-        }
-
-        .faq-icon {
-            font-size: 20px;
-            color: var(--accent);
-            transition: transform 0.3s;
-        }
-
-        .faq-item.open .faq-icon {
-            transform: rotate(45deg);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-
-        .faq-item.open .faq-answer {
-            max-height: 200px;
-        }
-
-        .faq-answer p {
-            padding-bottom: 24px;
-            font-size: 15px;
-            color: var(--text-dim);
-            line-height: 1.7;
-        }
-
-        /* CTA */
-        .cta-section {
-            padding: 120px 0;
-            text-align: center;
-        }
-
-        .cta-box {
-            background: var(--bg-soft);
-            border: 1px solid var(--border);
-            border-radius: 24px;
-            padding: 80px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-box::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(ellipse at center top, rgba(0, 212, 170, 0.1), transparent 60%);
-            pointer-events: none;
-        }
-
-        .cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(32px, 5vw, 44px);
-            font-weight: 700;
+        .course-preview h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text2);
             margin-bottom: 16px;
         }
 
-        .cta p {
-            font-size: 17px;
-            color: var(--text-dim);
-            max-width: 450px;
-            margin: 0 auto 32px;
+        .lesson {
+            padding: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 15px;
+        }
+
+        .lesson:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Money back */
+        .guarantee {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 10px;
+            font-size: 14px;
+            color: var(--accent);
         }
 
         /* Footer */
         footer {
-            padding: 40px 0;
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-inner {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .footer-copy {
+            text-align: center;
+            padding: 40px 24px;
+            color: var(--text2);
             font-size: 14px;
-            color: var(--text-dim);
         }
 
-        .footer-links {
-            display: flex;
-            gap: 32px;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: var(--text-dim);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-links a:hover {
-            color: var(--text);
-        }
-
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
-        @media (max-width: 900px) {
-            .features-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-                max-width: 400px;
-            }
-            
-            .pricing-card.featured {
-                transform: none;
-            }
-            
-            .pricing-card.featured:hover {
-                transform: translateY(-4px);
-            }
-            
-            .hero-stats {
-                gap: 40px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav { display: none; }
-            
-            .hero { padding: 140px 0 80px; }
-            
-            .hero-stats {
-                flex-direction: column;
-                gap: 24px;
-            }
-            
-            .lesson-row {
-                padding: 20px;
-            }
+        footer a {
+            color: var(--text2);
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header id="header">
-        <div class="container">
-            <div class="header-inner">
-                <a href="#" class="logo">
-                    <span class="logo-mark">🦶</span>
-                    Claw Academy
-                </a>
-                <nav>
-                    <a href="#features">Features</a>
-                    <a href="#course">Course</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#faq">FAQ</a>
-                </nav>
-                <a href="#pricing" class="btn btn-primary">Get Started</a>
-            </div>
-        </div>
+    <header>
+        <a href="#" class="logo">
+            <span>🦶</span> Claw Academy
+        </a>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-eyebrow">Now Enrolling for March 2026</div>
-            <h1>Build Your Own<br><span>AI Assistant</span></h1>
-            <p>Master OpenClaw and create a personal AI that runs on your computer. No monthly fees. No data leaves your machine.</p>
-            <div class="hero-buttons">
-                <a href="#pricing" class="btn btn-primary">Start Learning</a>
-                <a href="#course" class="btn btn-ghost">View Course</a>
-            </div>
-            <div class="hero-stats">
-                <div>
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">Lessons</div>
-                </div>
-                <div>
-                    <div class="stat-value">$67</div>
-                    <div class="stat-label">One-Time</div>
-                </div>
-                <div>
-                    <div class="stat-value">∞</div>
-                    <div class="stat-label">Lifetime Access</div>
-                </div>
-            </div>
-        </div>
-    </section>
+    <main>
+        <h1>Build Your Own<br><span>AI Assistant</span></h1>
+        <p class="tagline">Learn OpenClaw in 6 simple lessons. Run it on your computer. No monthly fees.</p>
 
-    <!-- Features -->
-    <section class="section" id="features">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">What You'll Learn</div>
-                <h2 class="section-title">Everything You Need</h2>
-                <p class="section-desc">From zero to your own AI assistant. No prior experience required.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Quick Installation</h3>
-                    <p>Get OpenClaw running in under 10 minutes with our beginner-friendly guide. Works on Mac, Linux, and Windows.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔗</div>
-                    <h3>App Integrations</h3>
-                    <p>Connect to Telegram, Discord, Slack, Email, and 50+ platforms. Your AI, everywhere you need it.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎙️</div>
-                    <h3>Voice & Audio</h3>
-                    <p>Set up voice commands and text-to-speech. Control your AI with your voice.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Smart Automation</h3>
-                    <p>Create workflows that connect to calendars, email, smart home devices, and more.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
-                    <h3>Custom Agents</h3>
-                    <p>Build your own AI agents for specific tasks. Create a team of specialized assistants.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔒</div>
-                    <h3>Privacy First</h3>
-                    <p>Your data stays on your machine. No cloud dependencies. Complete control.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        <a href="https://gumroad.com/l/claw-academy" class="cta">
+            Get the Course — $67
+        </a>
+        <span class="cta-sub">One-time payment. Lifetime access.</span>
 
-    <!-- Course -->
-    <section class="section course-section" id="course">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">The Course</div>
-                <h2 class="section-title">6 Lessons. Zero to Hero.</h2>
-                <p class="section-desc">Each lesson builds on the last. By the end, you'll have a fully functional AI assistant.</p>
-            </div>
-            <div class="course-list">
-                <div class="lesson-row">
-                    <div class="lesson-num">1</div>
-                    <div class="lesson-info">
-                        <h4>What is OpenClaw?</h4>
-                        <p>Introduction & Core Concepts</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-                <div class="lesson-row">
-                    <div class="lesson-num">2</div>
-                    <div class="lesson-info">
-                        <h4>Installation & Setup</h4>
-                        <p>Prerequisites and First Launch</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-                <div class="lesson-row">
-                    <div class="lesson-num">3</div>
-                    <div class="lesson-info">
-                        <h4>First Integrations</h4>
-                        <p>Connecting Telegram & Discord</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-                <div class="lesson-row">
-                    <div class="lesson-num">4</div>
-                    <div class="lesson-info">
-                        <h4>Voice & Audio</h4>
-                        <p>TTS & Voice Commands</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-                <div class="lesson-row">
-                    <div class="lesson-num">5</div>
-                    <div class="lesson-info">
-                        <h4>Automation</h4>
-                        <p>Calendar & Email Integration</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-                <div class="lesson-row">
-                    <div class="lesson-num">6</div>
-                    <div class="lesson-info">
-                        <h4>Custom Agents</h4>
-                        <p>Building Your Own AI</p>
-                    </div>
-                    <div class="lesson-arrow">→</div>
-                </div>
-            </div>
+        <div class="what-you-get">
+            <h2>What You Get</h2>
+            <ul>
+                <li><span class="check">✓</span> 6 step-by-step lessons</li>
+                <li><span class="check">✓</span> Setup in under 30 minutes</li>
+                <li><span class="check">✓</span> Works on Mac, Linux, Windows</li>
+                <li><span class="check">✓</span> Connect Telegram, Discord, email</li>
+                <li><span class="check">✓</span> Voice commands & automation</li>
+                <li><span class="check">✓</span> Access to community Discord</li>
+            </ul>
         </div>
-    </section>
 
-    <!-- Pricing -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">Pricing</div>
-                <h2 class="section-title">Simple, One-Time Price</h2>
-                <p class="section-desc">No monthly fees. No hidden costs. Pay once, own it forever.</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-icon">👥</div>
-                    <h3>Community</h3>
-                    <div class="pricing-price">Free</div>
-                    <p class="pricing-desc">Perfect for getting started</p>
-                    <ul class="pricing-features">
-                        <li>Discord community access</li>
-                        <li>Weekly tips & tricks</li>
-                        <li>Open source docs</li>
-                    </ul>
-                    <a href="#" class="btn btn-ghost" style="width:100%;justify-content:center">Join Free</a>
-                </div>
-                <div class="pricing-card featured">
-                    <div class="pricing-icon">📚</div>
-                    <h3>Full Course</h3>
-                    <div class="pricing-price">$67<span>/one-time</span></div>
-                    <p class="pricing-desc">Everything you need</p>
-                    <ul class="pricing-features">
-                        <li>Complete 6-lesson course</li>
-                        <li>Step-by-step scripts</li>
-                        <li>Discord community access</li>
-                        <li>Lifetime updates</li>
-                        <li>Source code access</li>
-                    </ul>
-                    <a href="https://gumroad.com/l/claw-academy" class="btn btn-primary" style="width:100%;justify-content:center">Get Course</a>
-                </div>
-                <div class="pricing-card">
-                    <div class="pricing-icon">👑</div>
-                    <h3>Mastermind</h3>
-                    <div class="pricing-price">$197<span>/month</span></div>
-                    <p class="pricing-desc">For serious learners</p>
-                    <ul class="pricing-features">
-                        <li>Full course access</li>
-                        <li>Monthly Zoom calls</li>
-                        <li>Direct Slack access</li>
-                        <li>1-on-1 setup help</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="https://gumroad.com/l/claw-mastermind" class="btn btn-ghost" style="width:100%;justify-content:center">Go Premium</a>
-                </div>
-            </div>
+        <div class="course-preview">
+            <h2>The Course</h2>
+            <div class="lesson">1. What is OpenClaw?</div>
+            <div class="lesson">2. Installation & Setup</div>
+            <div class="lesson">3. Connect Your First App</div>
+            <div class="lesson">4. Voice & Audio</div>
+            <div class="lesson">5. Automation Basics</div>
+            <div class="lesson">6. Custom Agents</div>
         </div>
-    </section>
 
-    <!-- FAQ -->
-    <section class="section" id="faq">
-        <div class="container">
-            <div class="section-header">
-                <div class="section-label">FAQ</div>
-                <h2 class="section-title">Questions Answered</h2>
-            </div>
-            <div class="faq-list">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Do I need coding experience?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>No! Our course starts from zero. If you can use a terminal/command line, you're good to go. We provide step-by-step instructions for everything.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        What computer do I need?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Mac, Linux, or Windows (with WSL). At least 4GB RAM (8GB recommended). A Raspberry Pi can work for basic setups!</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        How much does it cost to run?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>OpenClaw itself is free. The course is $67 one-time. Optional: $197/month for Mastermind with live calls.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Is this like ChatGPT?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Similar in that it's an AI, but you run it yourself. No data leaves your computer. Fully customizable. Plus you can connect it to your apps and smart home.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Can I get a refund?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes! 30-day money-back guarantee. No questions asked.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <button class="faq-question">
-                        How long does it take?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Basic setup: 10-30 minutes. Full course: 2-3 hours. After that, build and automate to your heart's content!</p>
-                    </div>
-                </div>
-            </div>
+        <div class="guarantee">
+            30-day money-back guarantee. No questions asked.
         </div>
-    </section>
+    </main>
 
-    <!-- CTA -->
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-box">
-                <div class="cta-content">
-                    <h2>Ready to Build Your AI?</h2>
-                    <p>Join hundreds of others who've taken control of their AI. Start your journey today.</p>
-                    <a href="#pricing" class="btn btn-primary">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-inner">
-                <div class="footer-copy">© 2026 Claw Academy. All rights reserved.</div>
-                <div class="footer-links">
-                    <a href="#features">Features</a>
-                    <a href="#course">Course</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#faq">FAQ</a>
-                </div>
-            </div>
-        </div>
+        <p>Questions? <a href="mailto:hello@clawacademy.com">Email us</a></p>
+        <p style="margin-top:8px">© 2026 Claw Academy</p>
     </footer>
-
-    <script>
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.getElementById('header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
-        });
-
-        // FAQ accordion
-        document.querySelectorAll('.faq-question').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                item.classList.toggle('open');
-            });
-        });
-    </script>
 </body>
 </html>
