@@ -13,26 +13,55 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         :root {
-            --bg: #0c0c12;
-            --bg2: #101018;
-            --card: #141420;
-            --border: #1e1e2e;
-            --text: #f0f0f5;
-            --text2: #8888a0;
-            --accent: #00d9ff;
-            --accent-dim: rgba(0, 217, 255, 0.12);
+            --bg-deep: #050810;
+            --bg: #0a0f1a;
+            --card: rgba(10, 15, 26, 0.65);
+            --border: rgba(136, 146, 176, 0.15);
+            --text: #f0f4ff;
+            --text2: #8892b0;
+            --coral: #ff4d4d;
+            --coral-dim: rgba(255, 77, 77, 0.12);
+            --cyan: #00e5cc;
         }
 
         body {
             font-family: 'JetBrains Mono', monospace;
-            background: var(--bg);
+            background: var(--bg-deep);
             color: var(--text);
             line-height: 1.6;
             min-height: 100vh;
             overflow-x: hidden;
         }
 
-        /* Subtle terminal background */
+        /* Stars background like OpenClaw */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.8), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(255,255,255,0.6), transparent),
+                radial-gradient(2px 2px at 130px 80px, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 160px 120px, rgba(255,255,255,0.7), transparent),
+                radial-gradient(2px 2px at 200px 60px, rgba(0,229,204,0.6), transparent),
+                radial-gradient(1px 1px at 250px 150px, rgba(255,255,255,0.5), transparent),
+                radial-gradient(2px 2px at 300px 40px, rgba(255,77,77,0.4), transparent);
+            background-size: 350px 200px;
+            animation: twinkle 8s ease-in-out infinite alternate;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.4;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.4; }
+            to { opacity: 0.7; }
+        }
+
+        /* Subtle terminal commands */
         .terminal-bg {
             position: fixed;
             top: 0;
@@ -41,37 +70,35 @@
             bottom: 0;
             z-index: -1;
             overflow: hidden;
-            opacity: 0.25;
+            opacity: 0.2;
         }
 
         .terminal-line {
             position: absolute;
             font-size: 11px;
-            color: var(--accent);
+            color: var(--cyan);
             white-space: nowrap;
-            animation: scroll 12s linear infinite;
+            animation: scroll 14s linear infinite;
             opacity: 0;
         }
 
         @keyframes scroll {
             0% { opacity: 0; transform: translateX(-100px); }
-            5% { opacity: 0.6; }
-            95% { opacity: 0.6; }
+            5% { opacity: 0.5; }
+            95% { opacity: 0.5; }
             100% { opacity: 0; transform: translateX(100vw); }
         }
 
-        .terminal-line:nth-child(1) { top: 8%; animation-delay: 0s; }
-        .terminal-line:nth-child(2) { top: 20%; animation-delay: 2s; }
-        .terminal-line:nth-child(3) { top: 32%; animation-delay: 4s; }
-        .terminal-line:nth-child(4) { top: 44%; animation-delay: 6s; }
-        .terminal-line:nth-child(5) { top: 56%; animation-delay: 8s; }
-        .terminal-line:nth-child(6) { top: 68%; animation-delay: 10s; }
-        .terminal-line:nth-child(7) { top: 80%; animation-delay: 12s; }
-        .terminal-line:nth-child(8) { top: 92%; animation-delay: 14s; }
+        .terminal-line:nth-child(1) { top: 10%; animation-delay: 0s; }
+        .terminal-line:nth-child(2) { top: 25%; animation-delay: 3s; }
+        .terminal-line:nth-child(3) { top: 40%; animation-delay: 6s; }
+        .terminal-line:nth-child(4) { top: 55%; animation-delay: 9s; }
+        .terminal-line:nth-child(5) { top: 70%; animation-delay: 12s; }
+        .terminal-line:nth-child(6) { top: 85%; animation-delay: 15s; }
 
         /* Header */
         header {
-            padding: 24px;
+            padding: 20px;
             display: flex;
             justify-content: center;
             position: relative;
@@ -91,8 +118,8 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background: var(--accent);
-            color: #0c0c12;
+            background: var(--coral);
+            color: var(--bg-deep);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -100,27 +127,27 @@
             font-size: 16px;
         }
 
-        .prompt { color: var(--accent); }
+        .prompt { color: var(--coral); }
 
         /* Main */
         main {
-            max-width: 520px;
+            max-width: 500px;
             margin: 0 auto;
-            padding: 20px 24px 80px;
+            padding: 20px 20px 80px;
             text-align: center;
             position: relative;
             z-index: 10;
         }
 
         h1 {
-            font-size: clamp(32px, 7vw, 46px);
+            font-size: clamp(32px, 7vw, 44px);
             font-weight: 600;
             line-height: 1.15;
             margin-bottom: 14px;
         }
 
         h1 span {
-            color: var(--accent);
+            color: var(--coral);
         }
 
         .tagline {
@@ -131,8 +158,8 @@
 
         /* CTA */
         .cta {
-            background: var(--accent);
-            color: #0c0c12;
+            background: var(--coral);
+            color: var(--bg-deep);
             font-size: 15px;
             font-weight: 600;
             padding: 15px 32px;
@@ -144,8 +171,8 @@
         }
 
         .cta:hover {
-            background: #33e1ff;
-            box-shadow: 0 0 30px var(--accent-dim);
+            background: #ff6b6b;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.3);
             transform: translateY(-2px);
         }
 
@@ -165,13 +192,14 @@
             border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
+            backdrop-filter: blur(12px);
         }
 
         .what-you-get h2 {
             font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--accent);
+            color: var(--coral);
             margin-bottom: 18px;
             font-weight: 500;
         }
@@ -194,7 +222,7 @@
             border-bottom: none;
         }
 
-        .arrow { color: var(--accent); }
+        .arrow { color: var(--coral); }
 
         /* Course */
         .course-list {
@@ -225,7 +253,7 @@
         }
 
         .lesson-num {
-            color: var(--accent);
+            color: var(--cyan);
             font-weight: 600;
             font-size: 11px;
         }
@@ -233,7 +261,7 @@
         /* Terminal demo */
         .terminal {
             margin-top: 32px;
-            background: var(--bg2);
+            background: #111827;
             border: 1px solid var(--border);
             border-radius: 10px;
             overflow: hidden;
@@ -280,52 +308,53 @@
         }
 
         .terminal-body .success {
-            color: var(--accent);
+            color: var(--cyan);
         }
 
         /* Guarantee */
         .guarantee {
             margin-top: 32px;
             padding: 14px;
-            background: var(--accent-dim);
-            border: 1px solid rgba(0, 217, 255, 0.2);
+            background: rgba(255, 77, 77, 0.08);
+            border: 1px solid rgba(255, 77, 77, 0.2);
             border-radius: 8px;
             font-size: 11px;
-            color: var(--accent);
+            color: var(--coral);
         }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 40px 24px;
-            color: #444;
+            color: #5a6480;
             font-size: 11px;
             position: relative;
             z-index: 10;
         }
 
         footer a {
-            color: #444;
+            color: #5a6480;
             text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <!-- Background -->
+    <!-- Stars background -->
+    <div class="stars"></div>
+
+    <!-- Terminal background -->
     <div class="terminal-bg">
-        <div class="terminal-line">> npm install openclaw --save</div>
-        <div class="terminal-line">> initializing claw setup wizard</div>
-        <div class="terminal-line">> connecting telegram bot...</div>
+        <div class="terminal-line">> claw install openclaw</div>
+        <div class="terminal-line">> initializing gateway...</div>
+        <div class="terminal-line">> connecting telegram bot</div>
         <div class="terminal-line">> voice recognition enabled</div>
-        <div class="terminal-line">> custom agent created: personal-ai</div>
-        <div class="terminal-line">> automation workflow active</div>
-        <div class="terminal-line">> server running on localhost:3000</div>
-        <div class="terminal-line">> 6 lessons completed</div>
+        <div class="terminal-line">> custom agent created</div>
+        <div class="terminal-line">> server running on :3000</div>
     </div>
 
     <header>
         <a href="#" class="logo">
-            <span class="logo-icon">🦶</span>
+            <span class="logo-icon">🦞</span>
             <span class="prompt">~/</span>claw-academy
         </a>
     </header>
