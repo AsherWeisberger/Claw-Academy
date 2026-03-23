@@ -69,12 +69,13 @@
             bottom: 0;
             z-index: -1;
             overflow: hidden;
-            opacity: 0.15;
+            opacity: 0.4;
         }
 
         .terminal-line {
             position: absolute;
-            font-size: 11px;
+            font-size: 13px;
+            font-weight: 500;
             color: var(--cyan);
             white-space: nowrap;
             animation: scroll 14s linear infinite;
@@ -83,8 +84,8 @@
 
         @keyframes scroll {
             0% { opacity: 0; transform: translateX(-100px); }
-            5% { opacity: 0.5; }
-            95% { opacity: 0.5; }
+            5% { opacity: 0.8; }
+            95% { opacity: 0.8; }
             100% { opacity: 0; transform: translateX(100vw); }
         }
 
